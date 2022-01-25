@@ -11,10 +11,11 @@ module.exports = function check(str, bracketsConfig) {
 
   for(let i = 0; i < str.length; i++) {
     let currentSymbol = str[i];
-
+    let isSame = BRACKET_MAP.hasOwnProperty(currentSymbol) && BRACKET_MAP[currentSymbol] === currentSymbol;
+       
     if(OPEN_BRACKETS.includes(currentSymbol)) {
-
-      if(currentSymbol === '|') {
+         
+      if(isSame) {
         if(STACK.includes(currentSymbol)) {
           if(STACK[STACK.length -1] === currentSymbol) {
             STACK.pop();
